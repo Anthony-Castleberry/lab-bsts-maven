@@ -89,7 +89,7 @@ public class SimpleBST<K, V> implements SimpleMap<K, V> {
    */
   @Override
   public V set(K key, V value) {
-    return null;        // STUB
+    setIterator = new Iterator<BSTNode<K, V>> nodes();
   } // set(K, V)
 
   /**
@@ -303,8 +303,10 @@ public class SimpleBST<K, V> implements SimpleMap<K, V> {
       @Override
       public BSTNode<K, V> next() {
         checkInit();
-        // STUB
-        return null;
+        BSTNode<K, V> node = stack.pop();
+        stack.push(node.left);
+        stack.push(node.right);
+        return node;
       } // next();
 
       void checkInit() {
